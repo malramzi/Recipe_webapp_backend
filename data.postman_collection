@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "23bc60f9-86a1-4a85-9ec1-d1c344500f48",
+		"name": "Cooking Blog API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26540021"
+	},
+	"item": [
+		{
+			"name": "POST /auth/authSignup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"john@doe.com\",\"password\":\"password\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/auth/authSignup",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"auth",
+						"authSignup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth/authLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"john1@doe.com\",\"password\":\"password\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/auth/authLogin",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"auth",
+						"authLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /auth/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/auth/users",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"auth",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /auth/user/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\":\"Jane\",\"last_name\":\"Doe\",\"email\":\"jane@doe.com\",\"password\":\"password\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/auth/user/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /auth/user/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/auth/user/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"auth",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /blog/recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/blog/recipes",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"blog",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /blog/recipes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"Veggie Pad Thai\",\"description\":\"Cook the noodles according to the packet instructions, then drain and refresh under cold running water and toss with 1 teaspoon of sesame oil.\",\"ingredients\":[\"150 g rice noodles\",\"sesame oil\",\"2 cloves of garlic\",\"80 g silken tofu\",\"low-salt soy sauce\"],\"category\":\"Thai\",\"label_image\":\"veggie-pad-thai.jpg\",\"posted_by\":\"61d42d0bfbf0d5f0a6e7fa6c\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/blog/recipes",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"blog",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /blog/recipe/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/blog/recipe/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"blog",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /blog/recipe/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"Veggie Pad Thai\",\"description\":\"Cook the noodles according to the packet instructions, then drain and refresh under cold running water and toss with 1 teaspoon of sesame oil.\",\"ingredients\":[\"150 g rice noodles\",\"sesame oil\",\"2 cloves of garlic\",\"80 g silken tofu\",\"low-salt soy sauce\"],\"category\":\"Thai\",\"label_image\":\"veggie-pad-thai.jpg\",\"posted_by\":\"61d42d0bfbf0d5f0a6e7fa6c\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/blog/recipe/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"blog",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /blog/recipe/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/blog/recipe/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"blog",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /planner/meal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Veggie Pad Thai\",\"proteins\":30,\"carbs\":40,\"fats\":20,\"scale\":\"g\",\"calories\":250,\"description\":\"Cook the noodles according to the packet instructions, then drain and refresh under cold running water and toss with 1 teaspoon of sesame oil.\",\"recipe\":\"61d42d0bfbf0d5f0a6e7fa6c\",\"image\":\"veggie-pad-thai.jpg\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/planner/meal",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"planner",
+						"meal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /planner/meals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/planner/meals",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"planner",
+						"meals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /planner/meal/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/planner/meal/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"planner",
+						"meal",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /planner/meal/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Veggie Pad Thai\",\"proteins\":30,\"carbs\":40,\"fats\":20,\"scale\":\"g\",\"calories\":250,\"description\":\"Cook the noodles according to the packet instructions, then drain and refresh under cold running water and toss with 1 teaspoon of sesame oil.\",\"recipe\":\"61d42d0bfbf0d5f0a6e7fa6c\",\"image\":\"veggie-pad-thai.jpg\"}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/planner/meal/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"planner",
+						"meal",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /planner/meal/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/planner/meal/:id",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"planner",
+						"meal",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzM2NTYyM2NiMmVjZjU0M2IzZjU1MSIsImlhdCI6MTc0MDg1ODc1MiwiZXhwIjoxNzQwODYyMzUyfQ.b7jFa-4RRAdEV6hBFnDsOQizJV5dQ4gzyjqqW-Vr79w",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "localhost:3415",
+			"type": "string"
+		}
+	]
+}

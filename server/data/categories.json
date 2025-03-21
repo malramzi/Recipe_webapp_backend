@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Thai",
+    "description": "The official national cuisine of Thailand is known for its spicy and sour flavors, with dishes like Tom Yum soup, Green Curry, and Pad Thai"
+  },
+  {
+    "name": "American",
+    "description": "The cuisine of the United States is diverse and influenced by many different cultures, with popular dishes like burgers, hot dogs, and apple pie"
+  },
+  {
+    "name": "Chinese",
+    "description": "Chinese cuisine is known for its variety and complexity, with dishes like Peking duck, Xiaolongbao, and Kung Pao chicken"
+  },
+  {
+    "name": "Mexican",
+    "description": "Mexican cuisine is known for its bold flavors and spices, with popular dishes like tacos, burritos, and quesadillas"
+  },
+  {
+    "name": "Indian",
+    "description": "Indian cuisine is known for its rich and complex spices, with popular dishes like curry, tandoori chicken, and naan bread"
+  },
+  {
+    "name": "Spanish",
+    "description": "Spanish cuisine is known for its use of olive oil, garlic, and seafood, with popular dishes like paella, tortilla, and gazpacho"
+  },
+  {
+    "name": "Italian",
+    "description": "Italian cuisine is known for its pasta dishes, pizzas, and rich sauces, with popular dishes like spaghetti Bolognese, pizza margherita, and lasagna"
+  }
+]
+
