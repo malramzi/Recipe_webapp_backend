@@ -60,7 +60,7 @@ exports.getAllRecipes = async (req, res) => {
 // Get recipes created by a specific user
 exports.getUserRecipes = async (req, res) => {
   try {
-    const recipes = await Recipe.find({ posted_by: req.user._id });
+    const recipes = await Recipe.find({ posted_by: req.user._id }).populate("posted_by").populate("category");;
     let modifiedRecipes = recipes.map((recipe) => ({...recipe.toObject(),id:recipe._id.toString()}))
     res.json(modifiedRecipes);
   } catch (err) {
@@ -81,17 +81,6 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
-exports.getRecipeByUser = async (req, res) => {
-  try {
-    const recipe = await Recipe.find({posted_by : req.user._id}).populate("posted_by").populate("category");
-    if (!recipe) {
-      return res.status(404).json({ error: "Recipe not found" });
-    }
-    res.json(recipe);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
 
 exports.findClosestRecipe = async (req, res) => {
   try {
@@ -138,7 +127,7 @@ exports.findClosestRecipe = async (req, res) => {
 // Update a recipe by ID
 exports.updateRecipe = async (req, res) => {
   try {
-    const data = {...req.body}
+    const data = {...req.body,ingredients:JSON.parse(req.body.ingredients || '[]'),procedures:JSON.parse(req.body.procedures || '[]')}
     if(req.file)
       data.image = req.file.filename
     delete data.posted_by

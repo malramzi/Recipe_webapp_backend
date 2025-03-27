@@ -8,13 +8,14 @@ const mealSchema = new mongoose.Schema({
   },
   proteins: {
     type: Number,
-    required: 'This field is required.'
   },
   carbs: {
     type: Number,
-    required: 'This field is required.'
   },
   fats: {
+    type: Number,
+  },
+  portion:{
     type: Number,
     required: 'This field is required.'
   },
@@ -25,7 +26,6 @@ const mealSchema = new mongoose.Schema({
   },
   calories: {
     type: Number,
-    required: 'This field is required.'
   },
   description: {
     type: String,
@@ -34,10 +34,10 @@ const mealSchema = new mongoose.Schema({
   recipe: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'recipe',
+    required: 'This field is required.'
   },
   image: {
     type: String,
-    required: 'This field is required.'
   },
 });
 

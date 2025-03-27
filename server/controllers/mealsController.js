@@ -1,5 +1,5 @@
 const Meal = require('../models/Meal');
-const Joi = require("joi");
+const Joi = require('joi');
 
 const mealSchemaJoi = Joi.object({
     name: Joi.string().required(),
@@ -16,14 +16,14 @@ const mealSchemaJoi = Joi.object({
 // Create a new meal
 exports.createMeal = async (req, res) => {
   const { error } = mealSchemaJoi.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
   try {
     const meal = new Meal(req.body);
     await meal.save();
-    res.status(201).send(meal);
+    res.status(201).json(meal);
   } catch (ex) {
-    res.status(400).send(ex.message);
+    res.status(400).json({ error: ex.message });
   }
 };
 
@@ -31,9 +31,9 @@ exports.createMeal = async (req, res) => {
 exports.getAllMeals = async (req, res) => {
   try {
     const meals = await Meal.find();
-    res.send(meals);
+    res.json(meals);
   } catch (ex) {
-    res.status(500).send(ex.message);
+    res.status(500).json({ error: ex.message });
   }
 };
 
@@ -41,26 +41,26 @@ exports.getAllMeals = async (req, res) => {
 exports.getMealById = async (req, res) => {
   try {
     const meal = await Meal.findById(req.params.id);
-    if (!meal) return res.status(404).send('Meal not found');
-    res.send(meal);
+    if (!meal) return res.status(404).json({ error: 'Meal not found' });
+    res.json(meal);
   } catch (ex) {
-    res.status(500).send(ex.message);
+    res.status(500).json({ error: ex.message });
   }
 };
 
 // Update a meal by ID
 exports.updateMeal = async (req, res) => {
   const { error } = mealSchemaJoi.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
   try {
     const meal = await Meal.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     });
-    if (!meal) return res.status(404).send('Meal not found');
-    res.send(meal);
+    if (!meal) return res.status(404).json({ error: 'Meal not found' });
+    res.json(meal);
   } catch (ex) {
-    res.status(400).send(ex.message);
+    res.status(400).json({ error: ex.message });
   }
 };
 
@@ -68,9 +68,10 @@ exports.updateMeal = async (req, res) => {
 exports.deleteMeal = async (req, res) => {
   try {
     const meal = await Meal.findByIdAndDelete(req.params.id);
-    if (!meal) return res.status(404).send('Meal not found');
-    res.send(meal);
+    if (!meal) return res.status(404).json({ error: 'Meal not found' });
+    res.json(meal);
   } catch (ex) {
-    res.status(500).send(ex.message);
+    res.status(500).json({ error: ex.message });
   }
 };
+

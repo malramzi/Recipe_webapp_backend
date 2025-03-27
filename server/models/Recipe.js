@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Ingredients = require('./Ingredients');
+const Category = require('./Category');
 
 const recipeSchema = new mongoose.Schema({
   title: {
@@ -45,8 +46,10 @@ const recipeSchema = new mongoose.Schema({
 });
 
 recipeSchema.pre('save', async function (next) {
+  console.log(this)
   const recipe = this;
   const ingredients = recipe.ingredients;
+  const category = await Category.findById(recipe.category)
   const existingIngredients = await Ingredients.find({ name: { $in: ingredients } });
   const newIngredients = ingredients.filter(ingredient => !existingIngredients.some(item => item.name === ingredient));
   const promises = newIngredients.map(ingredient => {
@@ -55,7 +58,7 @@ recipeSchema.pre('save', async function (next) {
   });
   const savedIngredients = await Promise.all(promises);
   recipe.ingredients = existingIngredients.map(item => item._id).concat(savedIngredients.map(item => item._id));
-  await recipe.category.updateOne({ $inc: { recipe_count: 1 } });
+  await category.updateOne({ $inc: { recipe_count: 1 } });
   next();
 });
 

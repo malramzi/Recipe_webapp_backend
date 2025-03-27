@@ -85,7 +85,10 @@ exports.updateUser = async (req, res) => {
   if (error) return res.status(400).send({error: error.details[0].message});
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.user._id, {...req.body,image:req.file.filename}, { new: true });
+    const parsedData = {...req.body}
+    if(req.file?.filename)
+      parsedData.image = req.file.filename
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, parsedData , { new: true });
     if (!updatedUser) return res.status(404).json({error: 'User not found'});
     res.json({success: true, updatedUser});
   } catch (ex) {
@@ -115,7 +118,9 @@ exports.getSavedRecipes = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate('saved_recipes');
     if (!user) return res.status(404).json({error: 'User not found'});
-    res.json({success: true, savedRecipes: user.saved_recipes});
+    const recipes = user.saved_recipes
+    await Recipe.populate(recipes,'posted_by')
+    res.json({success: true, savedRecipes: recipes});
   } catch (ex) {
     res.status(500).json({error: ex.message});
   }
@@ -141,14 +146,13 @@ exports.likeRecipe = async (req, res) => {
 // Change password for a user by ID
 exports.changePassword = async (req, res) => {
   const { oPassword, nPassword } = req.body;
-  if (nPassword === oPassword) return res.status(400).json({error: 'Existing Password.'});
-
   try {
     console.log(req.body, req)
     const user = await User.findById(req.user._id);
     if (!user) return res.status(404).json({error: 'User not found'});
     const validPassword = await bcrypt.compare(oPassword, user.password);
     if (!validPassword) return res.status(400).json({error: 'Old password is incorrect'});
+    if (nPassword === oPassword) return res.status(400).json({error: 'Existing Password.'});
 
     user.password = await bcrypt.hash(nPassword, 10);
     await user.save();
