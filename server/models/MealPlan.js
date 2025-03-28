@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const mealPlanSchema = new mongoose.Schema({
+  title:{
+    type: String,
+    required: 'This field is required.'
+  },
   lunch: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'meal',
@@ -25,10 +29,10 @@ const mealPlanSchema = new mongoose.Schema({
     default: Date.now,
     // required: 'This field is required.'
   },
-  created_by: {
+  posted_by: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    // required: 'This field is required.'
+    ref: 'user',
+    required: 'This field is required.'
   },
 });
 

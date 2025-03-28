@@ -19,15 +19,11 @@ const mealRoutes = require('./server/routes/mealRouter.js')
 const mealPlanRoutes = require('./server/routes/mealPlannerRouter.js')
 const userRoutes = require('./server/routes/userRouter.js');
 
-
 app.use('/auth', userRoutes);
 app.use('/blog', recipeRoutes);
 app.use('/explore', categoryRoutes);
-app.use('/meal', mealRoutes);
+app.use('/feature', mealRoutes);
 app.use('/planner', mealPlanRoutes);
-
-
-
 
 app.listen(port, ()=> console.log(`Listening to port ${port}`)); 
 

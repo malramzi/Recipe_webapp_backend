@@ -39,6 +39,11 @@ const mealSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  posted_by:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: 'This field is required.'
+  }
 });
 
 
